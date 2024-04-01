@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multilingual machine translation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        textarea, select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        p {
+            background-color: #e7e7e7;
+            padding: 10px;
+            border-left: 3px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Multilingual machine translation</h2>
+    <form action="/translate" method="POST">
+        <label for="input_language">Choose input language:</label>
+        <select name="input_language" id="input_language">
+            <option value="auto">Auto Detect</option>
+            <option value="en">English</option>
+            <option value="vi">Vietnamese</option>
+            <option value="es">Spanish</option>
+
+        </select>
+        <textarea name="text" rows="4" placeholder="Enter text to translate..."></textarea>
+        <label for="language">Choose output language:</label>
+        <select name="language" id="language">
+            <option value="en">English</option>
+            <option value="vi">Vietnamese</option>
+            <option value="es">Spanish</option>
+        </select>
+        <input type="submit" value="Translate">
+    </form>
+    {% if translation %}
+        <h3>Translation:</h3>
+        <p>{{ translation }}</p>
+    {% endif %}
+</body>
+</html>
